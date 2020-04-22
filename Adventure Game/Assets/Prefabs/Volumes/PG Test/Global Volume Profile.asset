@@ -23,7 +23,7 @@ MonoBehaviour:
     min: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.288
+    m_Value: 0.402
     min: 0
     max: 1
   scatter:
@@ -69,26 +69,26 @@ MonoBehaviour:
   m_AdvancedMode: 0
   rotation:
     m_OverrideState: 1
-    m_Value: 85
+    m_Value: 0
     min: 0
     max: 360
   skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 2
   exposure:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 0
   multiplier:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 4
     min: 0
   upperHemisphereLuxValue:
     m_OverrideState: 0
-    m_Value: 0.118351355
+    m_Value: 0.06623709
     min: 0
   upperHemisphereLuxColor:
     m_OverrideState: 0
-    m_Value: {x: 0.3400764, y: 0.4089888, z: 0.5}
+    m_Value: {x: 0.42937768, y: 0.43740812, z: 0.5}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Value: 0
   hdriSky:
     m_OverrideState: 1
-    m_Value: {fileID: 8900000, guid: 390a2d0dbeb77704a9112d5c63b1f3dd, type: 3}
+    m_Value: {fileID: 8900000, guid: 60e7e0567ee9ecf44a5d53bedce3032f, type: 3}
   enableBackplate:
     m_OverrideState: 0
     m_Value: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6b00fcf518bb94a90b408492e07b44, type: 3}
   m_Name: FilmGrain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   type:
     m_OverrideState: 1
