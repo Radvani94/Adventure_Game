@@ -10,6 +10,8 @@ namespace GameSpace
         public void StateEntry()
         {
             Debug.Log("END ENTRY");
+            Debug.Log("QUIT");
+            Application.Quit();
         }
 
         public void StateUpdate()

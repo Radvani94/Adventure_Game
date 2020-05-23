@@ -17,7 +17,7 @@ namespace GameSpace
 
         public void StateUpdate()
         {
-
+            Debug.Log("Wrong Update");
         }
 
         public void StateExit()
@@ -30,6 +30,9 @@ namespace GameSpace
     public class Game : MonoBehaviour
     {
         public static Game Instance { get; private set; }
+        public static StateMenu MenuInstance { get; private set; }
+        public static StateGame GameInstance { get; private set; }
+        public static StateEnd EndInstance { get; private set; }
 
         private void Awake()
         {
@@ -42,11 +45,27 @@ namespace GameSpace
             {
                 Destroy(gameObject);
             }
+
+            if (MenuInstance == null)
+            {
+                MenuInstance = new StateMenu();
+            }
+            if (GameInstance == null)
+            {
+                GameInstance = new StateGame();
+            }
+            if (EndInstance == null)
+            {
+                EndInstance = new StateEnd();
+            }
+
         }
 
 
         public GameState CurrState;
         public GameObject screenFade;
+        public int ScoreToEnd = 10;
+        public int ScoreNow = 0;
         
         public GameState GetCurrState()
         {
@@ -61,13 +80,13 @@ namespace GameSpace
                 switch (CurrState)
                 {
                     case GameState.Menu:
-                        gameObject.GetComponent<StateMenu>().StateExit();
+                        MenuInstance.StateExit();
                         break;
                     case GameState.Play:
-                        gameObject.GetComponent<StateGame>().StateExit();
+                        GameInstance.StateExit();
                         break;
                     case GameState.End:
-                        gameObject.GetComponent<StateEnd>().StateExit();
+                        EndInstance.StateExit();
                         break;
                 }
 
@@ -75,14 +94,14 @@ namespace GameSpace
                 switch (NewState)
                 {
                     case GameState.Menu:
-                        gameObject.GetComponent<StateMenu>().StateEntry();
+                        MenuInstance.StateEntry();
                         break;
                     case GameState.Play:
                         SceneManager.LoadScene("Character Testing");
-                        gameObject.GetComponent<StateGame>().StateEntry();
+                        GameInstance.StateEntry();
                         break;
                     case GameState.End:
-                        gameObject.GetComponent<StateEnd>().StateEntry();
+                        EndInstance.StateEntry();
                         break;
                 }
                 CurrState = NewState;
@@ -108,7 +127,8 @@ namespace GameSpace
         void Start()
         {
             //Initialize Game
-            gameObject.GetComponents<StateMenu>();
+
+            
             //screenFade = GameObject.FindGameObjectWithTag("Fader");
             TransitionToState(GameState.Menu);
         }
@@ -116,21 +136,20 @@ namespace GameSpace
         // Update is called once per frame
         void Update()
         {
-            //switch (CurrState)
-            //{
-            //    case 0:
-            //        break;
-            //    case 1:
-            //        break;
-            //    case 2:
-            //        break;
-            //    case 3:
-            //        break;
-
-
-            //}
-
+            switch (CurrState)
+            {
+                case GameState.Menu:
+                    MenuInstance.StateUpdate();
+                    break;
+                case GameState.Play:
+                    GameInstance.StateUpdate();
+                    break;
+                case GameState.End:
+                    EndInstance.StateUpdate();
+                    break;
+            }
         }
+
         public void doPlayGame()
         {
             Debug.Log("Play Game");

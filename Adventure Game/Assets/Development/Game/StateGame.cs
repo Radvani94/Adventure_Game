@@ -14,12 +14,16 @@ namespace GameSpace
 
         public void StateUpdate()
         {
-            if(Input.GetButtonDown("Quit"))
+            if (Game.Instance.ScoreNow >= Game.Instance.ScoreToEnd)
+            {
+                Debug.Log("QUIT");
+                Game.Instance.TransitionToState(GameState.End);
+            }
+            if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Debug.Log("QUIT");
                 Application.Quit();
             }
-            
         }
 
         public void StateExit()
