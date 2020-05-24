@@ -5,13 +5,26 @@ using UnityEngine;
 public class ScriptedTest : ScriptedEventTrigger
 {
     private float TotalTime = 0;
+    private BoxCollider thisCollider;
     public float Delay = 3;
     public GameObject TestBlocks;
+    public ObjectType Action;
+
     public Rigidbody[] bodiez;
+    public Light thislight;
 
     private void Start()
     {
-        bodiez = TestBlocks.GetComponentsInChildren<Rigidbody>();
+        thisCollider = gameObject.GetComponent<BoxCollider>();
+        switch(Action)
+        {
+            case ObjectType.FALLING_OBJECT:
+                bodiez = TestBlocks.GetComponentsInChildren<Rigidbody>();
+                break;
+            case ObjectType.LIGHT_ON:
+                thislight.enabled = false;
+                break;
+        }
     }
     void waitFor(float _seconds)
     {
@@ -21,10 +34,20 @@ public class ScriptedTest : ScriptedEventTrigger
     void DoThis()
     {
         Debug.Log("DID THIS");
-        for(int i =0; i<bodiez.Length; i++)
+        switch (Action)
         {
-            bodiez[i].useGravity = true;
+            case ObjectType.FALLING_OBJECT:
+                for (int i = 0; i < bodiez.Length; i++)
+                {
+                    bodiez[i].useGravity = true;
+                }
+                break;
+            case ObjectType.LIGHT_ON:
+                thislight.enabled = true;
+                break;
         }
+
+        thisCollider.enabled = false;
     }
 
     IEnumerator waitForMe(float secs)

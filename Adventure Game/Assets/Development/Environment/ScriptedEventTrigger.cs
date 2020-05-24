@@ -4,16 +4,17 @@ using UnityEngine;
 
 public abstract class ScriptedEventTrigger : MonoBehaviour
 {
+    public enum ObjectType { FALLING_OBJECT, LIGHT_ON, SOUND_ON };
     //private float TotalTime = 0;
     //void Start()
     //{
-        
+
     //}
 
     //// Update is called once per frame
     //void Update()
     //{
-        
+
     //}
 
     //void waitFor(float _seconds)
@@ -47,6 +48,6 @@ public abstract class ScriptedEventTrigger : MonoBehaviour
 
     //private void OnTriggerExit(Collider other)
     //{
-        
+
     //}
 }
