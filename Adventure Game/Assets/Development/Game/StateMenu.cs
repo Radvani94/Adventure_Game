@@ -14,7 +14,7 @@ namespace GameSpace
 
         public void StateUpdate()
         {
-            //Debug.Log("MENU ENTRY");
+           
         }
 
         public void StateExit()

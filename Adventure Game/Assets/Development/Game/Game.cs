@@ -97,7 +97,8 @@ namespace GameSpace
                         MenuInstance.StateEntry();
                         break;
                     case GameState.Play:
-                        SceneManager.LoadScene("Character Testing");
+                        //SceneManager.LoadScene("Character Testing");
+                        SceneManager.LoadSceneAsync("Character Testing");
                         GameInstance.StateEntry();
                         break;
                     case GameState.End:

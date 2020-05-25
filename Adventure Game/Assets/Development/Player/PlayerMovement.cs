@@ -76,6 +76,17 @@ namespace GameSpace
                         }
                     }
                 }
+
+                if (hit.transform.CompareTag("LighthouseDoor"))
+                {
+                    if (distanceToInteractable < InteractableDistance)
+                    {
+                        if (Input.GetKeyUp(KeyCode.E))
+                        {
+                            Game.Instance.TransitionToState(GameState.Play);
+                        }
+                    }
+                }
             }
         }
     }
